@@ -1,3 +1,4 @@
+package Linkedlist_practice;
 public class LL {
     private Node head,tail;
     private int size;
@@ -77,7 +78,7 @@ public class LL {
         return val;
     }
 
-    //display function for LL
+    //display function for Linkedlist_practice.LL
     public void display(){
         Node temp=head;
         if(temp==null){
@@ -102,9 +103,19 @@ public class LL {
         tail=node;
         size+=1;
     }
-
-
-    private class Node{
+        //Removing duplicates from A Sorted Linked List
+        void duplicateRemoval(){
+        Node temp=head;
+        while(temp.next!=null){
+            if(temp.value==temp.next.value){
+                temp.next= temp.next.next;
+            }
+            temp=temp.next;
+        }
+        tail=temp;
+        tail.next=null;
+    }
+        private class Node{
         private int value;//default value will be 0
         private Node next;//default value will be null
 
