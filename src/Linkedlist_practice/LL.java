@@ -115,6 +115,28 @@ public class LL {
         tail=temp;
         tail.next=null;
     }
+
+    public static LL merge(LL l1, LL l2, LL ans) {  //function logic to merge two SORTED linked lists
+        Node temp1 = l1.head;
+        Node temp2 = l2.head;
+        while (temp1 != null && temp2 != null) {
+            if (temp1.value < temp2.value) {
+                ans.insertAtLast(temp1.value);
+                temp1 = temp1.next;
+            }
+            ans.insertAtLast(temp2.value);
+            temp2 = temp2.next;
+        }
+        while (temp1 != null) {
+            ans.insertAtLast(temp1.value);
+            temp1 = temp1.next;
+        }
+        while (temp2 != null) {
+            ans.insertAtLast(temp2.value);
+            temp2 = temp2.next;
+        }
+        return ans;
+    }
         private class Node{
         private int value;//default value will be 0
         private Node next;//default value will be null
@@ -127,5 +149,22 @@ public class LL {
             this.value = value;
             this.next = next;
         }
+    }
+
+    public static void main(String[] args) {
+        LL l1 =new LL();
+        LL l2 = new LL();
+        LL ans = new LL();
+        l1.insertAtLast(1);
+        l1.insertAtLast(5);
+        l1.insertAtLast(9);
+        l2.insertAtLast(2);
+        l2.insertAtLast(4);
+        l2.insertAtLast(7);
+        l2.insertAtLast(11);
+        l1.display();
+        l2.display();
+        merge(l1,l2,ans);
+        ans.display();
     }
 }
